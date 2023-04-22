@@ -1,0 +1,43 @@
+<%- include("partials/header") -%>
+<h1>Home</h1>
+<p><%=hsc %></p>
+<% console.log(inputDatas.length)%>
+
+<% /* %>------------------------------------------------------------------------
+X <% for(var i=0;i<inputDatas.length;i++){ %>  ---------------------------------
+X <% console.log(inputDatas[i].title); }%> -------------------------------------
+X commented because I'll be implementing the forEach loop instead of a simple for
+-------------------------------------------------------------------------<% */ %>   
+
+<% inputDatas.forEach(function(inputData){ %>
+<%  console.log(inputData.title); }) %>
+
+
+<% /* %> ---------------------------------------------------------------- multiline comments like this
+ X <% if(inputDatas.length=0) { %> ----- this was the error here i guess in the if statement, so doing
+ X  <p><%= hsc  %></p>                                                         it again below this one
+ X <% } else {  for(int i=0;i<inputDatas.length;i++) {%>  ------int i ki jga var i hoga
+ X  <p><%=inputDatas[i].title %> </p>
+ X  <p> <%=inputDatas[i].content %></p>       ----------------------------------------------------------
+ X <% } }%>                                 ----------------------------------------------------------
+------------------------------------------------------------------end of our multiline comment <% */ %>   
+
+<% if(inputDatas.length==0) { %> 
+  <p><%= hsc  %></p>            
+ <% } else {  for(var i=0;i<inputDatas.length;i++) { let k= inputDatas[i]._id; %> 
+  <h1><%=inputDatas[i].title %> </h1>
+  <p> <%=inputDatas[i].content.substring(0,100)+" ..." %>
+      <a href="/posts/<%= k %>">Read more</a>
+      <form class="" action="/delete" method="post">
+
+        <button type="submit" name="button" value="<%= inputDatas[i]._id%>">Delete</button>
+  
+       
+  
+      </form>
+  </p>
+ <% } }%>  
+
+
+
+<%-  include("partials/footer") -%>
